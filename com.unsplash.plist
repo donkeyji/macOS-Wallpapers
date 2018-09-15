@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Label 制定自动脚本的名称 -->
+  <key>Label</key>
+  <string>com.unsplash.plist</string>
+  <!-- 指定要运行的脚本 -->
+  <key>ProgramArguments</key>
+  <array>
+    <!-- 请将 username 更改为自己的用户名,以下同样要改 -->
+    <string>/Users/{username}/Pictures/Wallpapers/wallpaper.sh</string>
+  </array>
+  <!-- 指定要运行的时间间隔，以秒为单位 -->
+  <key>StartInterval</key>
+  <integer>600</integer>
+  <!-- 标准输出文件 -->
+  <key>StandardOutPath</key>
+  <string>/Users/{username}/Pictures/Wallpapers/run.log</string>
+  <!-- 标准错误输出文件，错误日志 -->
+  <key>StandardErrorPath</key>
+  <string>/Users/{username}/Pictures/Wallpapers/log.err</string>
+</dict>
+</plist>
