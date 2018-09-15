@@ -37,6 +37,11 @@ pip install requests bs4 lxml
 launchctl load -w 'com.unsplash.plist`
 launchctl start 'com.unsplash.plist`
 ```
-注意把 `com.unsplash.plist` 文件中的用户文件夹设置为你自己的用户文件夹
+注意 `com.unsplash.plist` 文件中的注释  
+并根据注释更改相关内容
+每次更改时要取消加载，然后重新加载
+```
+launchctl unload -w 'com.unsplash.plist
+launchctl load -w 'com.unsplash.plist
+```
 
-其中的一些参数需要自行修改。
