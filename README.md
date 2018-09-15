@@ -48,3 +48,11 @@ launchctl load -w 'com.unsplash.plist'
 
 关于 `launchctl` 的更多内容请点击[该链接](https://www.jianshu.com/p/4addd9b455f2)
 
+
+## 附录
+一些好用的图片接口
+
+[Picsum](https://picsum.photos)
+[dujin](https://api.dujin.org/bing/1920.php)
+[Unsplash](https://source.unsplash.com/random)
+
