@@ -38,10 +38,12 @@ launchctl load -w 'com.unsplash.plist`
 launchctl start 'com.unsplash.plist`
 ```
 注意 `com.unsplash.plist` 文件中的注释  
-并根据注释更改相关内容
+并根据注释更改相关内容  
 每次更改时要取消加载，然后重新加载
 ```
 launchctl unload -w 'com.unsplash.plist
 launchctl load -w 'com.unsplash.plist
 ```
+
+关于 `launchctl` 的更多内容请点击[该链接](https://www.jianshu.com/p/4addd9b455f2)
 
