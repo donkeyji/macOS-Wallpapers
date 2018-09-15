@@ -30,7 +30,7 @@ source env/bin/activate
 pip install requests bs4 lxml
 ```
 
-### 第三步：设置自动更新
+### 第四步：设置自动更新
 将 `com.unsplash.plist` 放入到 `/Users/{username}/Library/LaunchAgents` 中
 加载并启用
 ```
@@ -39,6 +39,7 @@ launchctl start 'com.unsplash.plist`
 ```
 注意 `com.unsplash.plist` 文件中的注释  
 并根据注释更改相关内容  
+
 每次更改时要取消加载，然后重新加载
 ```
 launchctl unload -w 'com.unsplash.plist
