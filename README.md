@@ -27,7 +27,7 @@ pip3 install virtualenv
 ```
 virtualenv env
 source env/bin/activate
-pip install requests bs4 lxml
+pip install requests
 ```
 
 ### 第四步：设置自动更新
@@ -53,6 +53,8 @@ launchctl load -w 'com.unsplash.plist'
 一些好用的图片接口
 
 [Picsum](https://picsum.photos)
+
 [dujin](https://api.dujin.org/bing/1920.php)
+
 [Unsplash](https://source.unsplash.com/random)
 
