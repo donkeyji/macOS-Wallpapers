@@ -9,7 +9,7 @@ import os
 import time
 import datetime
 import requests
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 import lxml
 import json
 
@@ -27,15 +27,16 @@ def crawl():
     :return: 返回供 shell 脚本读取的文本
     '''
     tmp = _get_page(URL)
-    html = tmp.text
-    soup = _get_soup(html)
-    json_cont = soup.get_text()
+    json_cont = tmp.text
+    #soup = _get_soup(html)
+    #json_cont = soup.get_text()
     adict = _parse_json(json_cont)
+    #print(adict)
     pic_id = adict['id']
     download_links = adict['links']['download']
     source_url = adict['links']['html']
-    _save_pic(pic_id, download_links)
-    _write_info(pic_id, source_url)
+    #_save_pic(pic_id, download_links)
+    #_write_info(pic_id, source_url)
     print(pic_id)
 
 def _get_page(url):
@@ -43,10 +44,12 @@ def _get_page(url):
     r = requests.get(url, headers=HEADERS, proxies=PROXIES) # 在这里启用代理
     return r
 
+'''
 def _get_soup(html):
 
     soup = BeautifulSoup(html, 'lxml')
     return soup
+'''
 
 def _parse_json(json_cont):
 
