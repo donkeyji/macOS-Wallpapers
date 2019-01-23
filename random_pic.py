@@ -11,7 +11,7 @@ import datetime
 import requests
 import json
 
-TOKEN = 'de487e677f3ae3ae331bc73e7bf7c44e4f1958de82ee507a9f5c5f5759045564' # 填入你自己的 Access Key
+TOKEN = '' # 填入你自己的 Access Key
 URL = 'https://api.unsplash.com/photos/random?client_id=' + TOKEN
 HEADERS = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'}
 PROXIES = {'http': 'socks5://127.0.0.1:1086', 'https': 'socks5://127.0.0.1:1086'}
