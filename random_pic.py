@@ -1,69 +1,56 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2018-09-15
-# @Author  : yiming (kevinjobs@qq.com)
-# @Link    : kevinjobs.github.io
+# @Update  : 2019-01-23
+# @Author  : 
+# @Link    : 
 # @Version : 1.0
 
 import os
-import time
 import datetime
 import requests
-#from bs4 import BeautifulSoup
-import lxml
 import json
 
-TOKEN = '' # 请填入自己的 Unsplash API 的 token，在 https://unsplash.com/developer 申请
+TOKEN = 'de487e677f3ae3ae331bc73e7bf7c44e4f1958de82ee507a9f5c5f5759045564' # 填入你自己的 Access Key
 URL = 'https://api.unsplash.com/photos/random?client_id=' + TOKEN
 HEADERS = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'}
+PROXIES = {'http': 'socks5://127.0.0.1:1086', 'https': 'socks5://127.0.0.1:1086'}
 
-# socks 代理，视你的网络情况是否启用代理，
-# 如要代理,请安装 pip install "requests[socks]"
-PROXIES = {'http': 'socks5://127.0.0.1:1086', 'https': 'socks5://127.0.0.1:1086'} 
-
-
-def crawl():
+def crawl(url):
     '''
-    :return: 返回供 shell 脚本读取的文本
+    :return: return the id for the sh script
     '''
-    tmp = _get_page(URL)
-    json_cont = tmp.text
-    #soup = _get_soup(html)
-    #json_cont = soup.get_text()
-    adict = _parse_json(json_cont)
-    #print(adict)
-    pic_id = adict['id']
-    download_links = adict['links']['download']
-    source_url = adict['links']['html']
-    #_save_pic(pic_id, download_links)
-    #_write_info(pic_id, source_url)
-    print(pic_id)
-
-def _get_page(url):
-
-    r = requests.get(url, headers=HEADERS, proxies=PROXIES) # 在这里启用代理
-    return r
-
-'''
-def _get_soup(html):
-
-    soup = BeautifulSoup(html, 'lxml')
-    return soup
-'''
-
-def _parse_json(json_cont):
-
+    # get the json content from unsplash API
+    json_cont = _get_response(url).text
+    # json to python dict
     adict = json.loads(json_cont)
-    return adict
+    # title is the description of the picture
+    title = adict['description']
+    # extract the link
+    download_links = adict['links']['download']
+    # the raw page
+    source_url = adict['links']['html']
+    # to save image
+    _save_pic(title, download_links)
+    # log
+    _write_info(title, source_url)
+    # print to the shell script
+    # the shell script catch a title from this
+    print(title)
+
+def _get_response(url):
+
+    r = requests.get(url, headers=HEADERS, proxies=PROXIES) # use proxy if neccessary
+    return r
 
 def _save_pic(title, url):
 
-    r = _get_page(url)
+    r = _get_response(url) # get the response
     _make_path('images')
     if r:
         with open(r'images/%s.jpg' %title, 'wb') as pic:
             for chunk in r.iter_content(chunk_size=1024):
-                pic.write(chunk) # 写入图片
+                pic.write(chunk) # write to the image file
     else:
         pass
 
@@ -71,19 +58,18 @@ def _write_info(title, source_url):
 
     date = datetime.datetime.now()
     if title:
-        # 写入日志
         with open(r'images/下载日志.log', 'a+') as fp:
-            fp.write('DATE:%s - DESCRIPTION: %s, URL: %s\n' %(date, title, source_url))
+            fp.write('DATE: {}, URL: {}, DESCRIPTION: {}\n'.format(date, source_url, title))
     else:
         pass
 
 def _make_path(path):
 
-    # 判断文件夹是否存在
+    # judge the path's existence
     if os.path.exists(path):
         pass
     else:
         os.mkdir(path)
 
 if __name__ == '__main__':
-    crawl()
+    crawl(URL)
