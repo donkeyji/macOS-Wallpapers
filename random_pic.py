@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # @Date    : 2018-09-15
 # @Update  : 2019-01-23
-# @Author  : 
-# @Link    : 
+# @Author  :
+# @Link    :
 # @Version : 1.0
 
 import os
@@ -28,6 +28,9 @@ def crawl(url):
     adict = json.loads(json_cont)
     # title is the description of the picture
     title = adict['description']
+    # if title is None
+    if title == None:
+        title = adict['id']
     # extract the link
     download_links = adict['links']['download']
     # the raw page
