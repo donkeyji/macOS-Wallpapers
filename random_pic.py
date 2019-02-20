@@ -11,10 +11,12 @@ import datetime
 import requests
 import json
 
-TOKEN = '' # 填入你自己的 Access Key
+# read token from TOKEN file
+TOKEN_FILE = 'TOKEN'
+with open(TOKEN_FILE, 'r') as tf:
+    TOKEN = str(tf.read())
 URL = 'https://api.unsplash.com/photos/random?client_id=' + TOKEN
 HEADERS = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'}
-
 PROXIES = {'http': 'socks5://127.0.0.1:1086', 'https': 'socks5://127.0.0.1:1086'}
 # 为了使用代理，你需要安装 pip3 install requests['socks']
 
