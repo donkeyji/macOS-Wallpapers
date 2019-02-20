@@ -22,6 +22,8 @@ pip3 install virtualenv
 在你的用户文件夹 `Pictures` 下创建 `Wallpapers`，形成 `/Users/{username}/Pictures/Wallpapers`  
 并将 `wallpaper.sh` & `random_pic.py` 放入到该文件夹
 
+注意：你的TOKEN应该创建一个文件（无后缀名）来放置
+
 ### 第三步：设置 python 虚拟环境并安装模块
 在 `/Users/{username}/Pictures/Wallpapers` 文件夹下执行
 ```
