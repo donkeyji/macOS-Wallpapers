@@ -9,4 +9,4 @@ sleep 5
 localpath="/Users/$USER/Pictures/Wallpapers/images/$title.jpg"
 osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$localpath\""
 # 提示壁纸更换完成
-osascript -e "display notification \"壁纸更换成功\" with title \"壁纸更换脚本\""
+osascript -e "display notification \"壁纸更换成功\n$title\" with title \"壁纸更换脚本\""
